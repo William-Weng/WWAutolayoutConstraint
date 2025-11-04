@@ -1,0 +1,15 @@
+{
+  "originHash" : "4464005d444828a3d4624ba8b1c5b3fbe5a622a39a60f9ad9687e132a0434508",
+  "pins" : [
+    {
+      "identity" : "wwautolayoutconstraint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/William-Weng/WWAutolayoutConstraint",
+      "state" : {
+        "revision" : "184979c82247785450282dd5a949a67861bbd8d0",
+        "version" : "0.5.0"
+      }
+    }
+  ],
+  "version" : 3
+}
