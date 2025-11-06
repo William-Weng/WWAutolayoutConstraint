@@ -20,6 +20,9 @@ public extension WWAutolayoutWrapper {
         case right(_ superView: UIView, _ right: CGFloat)
         case height(_ height: CGFloat)
         case width(_ width: CGFloat)
+        case heightRatio(_ otherView: UIView, _ ratio: CGFloat, _ offset: CGFloat)
+        case widthRatio(_ otherView: UIView, _ ratio: CGFloat, _ offset: CGFloat)
+        case aspectRatio(_ ratio: CGFloat, _ offset: CGFloat)
         case centerX(_ otherView: UIView, _ multiplier: CGFloat, _ offset: CGFloat)
         case centerY(_ otherView: UIView, _ multiplier: CGFloat, _ offset: CGFloat)
     }

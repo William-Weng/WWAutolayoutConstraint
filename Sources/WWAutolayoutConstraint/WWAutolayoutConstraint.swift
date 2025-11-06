@@ -31,6 +31,7 @@ public extension WWAutolayoutWrapper {
     /// - Parameters:
     ///   - otherView: UIView
     ///   - top: CGFloat
+    /// - Returns: Self
     func top(by otherView: UIView, top: CGFloat) -> Self {
         finish()
         functionType = .top(otherView, top)
@@ -41,6 +42,7 @@ public extension WWAutolayoutWrapper {
     /// - Parameters:
     ///   - otherView: UIView
     ///   - bottom: CGFloat
+    /// - Returns: Self
     func bottom(by otherView: UIView, bottom: CGFloat) -> Self {
         finish()
         functionType = .bottom(otherView, bottom)
@@ -51,6 +53,7 @@ public extension WWAutolayoutWrapper {
     /// - Parameters:
     ///   - otherView: UIView
     ///   - bottom: CGFloat
+    /// - Returns: Self
     func left(by otherView: UIView, left: CGFloat) -> Self {
         finish()
         functionType = .left(otherView, left)
@@ -61,6 +64,7 @@ public extension WWAutolayoutWrapper {
     /// - Parameters:
     ///   - otherView: UIView
     ///   - right: CGFloat
+    /// - Returns: Self
     func right(by otherView: UIView, left: CGFloat) -> Self {
         finish()
         functionType = .left(otherView, left)
@@ -69,6 +73,7 @@ public extension WWAutolayoutWrapper {
     
     /// 高度
     /// - Parameter height: CGFloat
+    /// - Returns: Self
     func height(_ height: CGFloat) -> Self {
         finish()
         functionType = .height(height)
@@ -77,16 +82,54 @@ public extension WWAutolayoutWrapper {
     
     /// 寬度
     /// - Parameter height: CGFloat
+    /// - Returns: Self
     func width(_ width: CGFloat) -> Self {
         finish()
         functionType = .width(width)
         return self
     }
         
+    /// 高度比例
+    /// - Parameters:
+    ///   - otherView: UIView
+    ///   - ratio: 倍率
+    ///   - offset: 偏差值
+    /// - Returns: Self
+    func heightRatio(by otherView: UIView, ratio: CGFloat = 1.0, offset: CGFloat = 0) -> Self {
+        finish()
+        functionType = .heightRatio(otherView, ratio, offset)
+        return self
+    }
+    
+    /// 寬度比例
+    /// - Parameters:
+    ///   - otherView: UIView
+    ///   - ratio: 倍率
+    ///   - offset: 偏差值
+    /// - Returns: Self
+    func widthRatio(by otherView: UIView, ratio: CGFloat = 1.0, offset: CGFloat = 0) -> Self {
+        finish()
+        functionType = .widthRatio(otherView, ratio, offset)
+        return self
+    }
+    
+    /// 自身長寬比
+    /// - Parameters:
+    ///   - ratio: 倍率
+    ///   - offset: 偏差值
+    /// - Returns: Self
+    func aspectRatio(_ ratio: CGFloat = 1.0, offset: CGFloat = 0) -> Self {
+        finish()
+        functionType = .aspectRatio(ratio, offset)
+        return self
+    }
+    
     /// 垂直置中
     /// - Parameters:
     ///   - otherView: UIView
     ///   - multiplier: 倍率
+    ///   - offset: 偏差值
+    /// - Returns: Self
     func centerX(by otherView: UIView, multiplier: CGFloat = 1.0, offset: CGFloat = 0) -> Self {
         finish()
         functionType = .centerX(otherView, multiplier, offset)
@@ -97,6 +140,8 @@ public extension WWAutolayoutWrapper {
     /// - Parameters:
     ///   - otherView: UIView
     ///   - multiplier: 倍率
+    ///   - offset: 偏差值
+    /// - Returns: Self
     func centerY(by otherView: UIView, multiplier: CGFloat = 1.0, offset: CGFloat = 0) -> Self {
         finish()
         functionType = .centerY(otherView, multiplier, offset)
@@ -144,6 +189,9 @@ public extension WWAutolayoutWrapper {
         case .right(let superView, let right): view._right(by: superView, right: right)
         case .height(let height): view._height(with: height)
         case .width(let width): view._width(with: width)
+        case .heightRatio(let otherView, let ratio, let offset): view._height(by: otherView, ratio: ratio, offset: offset)
+        case .widthRatio(let otherView, let ratio, let offset): view._width(by: otherView, ratio: ratio, offset: offset)
+        case .aspectRatio(let ratio, let offset): view._aspectRatio(ratio, offset: offset)
         case .centerX(let otherView, let multiplier, let offset): view._centerX(by: otherView, multiplier: multiplier, offset: offset)
         case .centerY(let otherView, let multiplier, let offset): view._centerY(by: otherView, multiplier: multiplier, offset: offset)
         }

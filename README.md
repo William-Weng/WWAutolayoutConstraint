@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/43cb7730-cb7a-40b8-89ef-08c88125332c
 ### [Installation with Swift Package Manager](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/使用-spm-安裝第三方套件-xcode-11-新功能-2c4ffcf85b4b)
 ```bash
 dependencies: [
-    .package(url: "https://github.com/William-Weng/WWAutolayoutConstraint.git", .upToNextMajor(from: "0.5.0"))
+    .package(url: "https://github.com/William-Weng/WWAutolayoutConstraint.git", .upToNextMajor(from: "0.6.0"))
 ]
 ```
 
@@ -25,9 +25,12 @@ dependencies: [
 |right(by:right:)|跟右邊的間距|
 |height(\_:)|高度|
 |width(\_:)|寬度|
+|heightRatio(by:ratio:offset:)|高度比例|
+|widthRatio(by:ratio:offset:)|寬度比例|
+|aspectRatio(\_:offset:)|自身長寬比|
 |centerX(by:multiplier:offset:)|垂直置中|
 |centerY(by:multiplier:offset:)|水平置中|
-|finish()|完成結束 + 執行上一次的功能|
+|finish()|完成結束|
 
 ### Example
 ```swift

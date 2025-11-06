@@ -96,12 +96,52 @@ extension UIView {
         let constraints = [heightAnchor.constraint(equalToConstant: height)]
         NSLayoutConstraint.activate(constraints)
     }
-    
+        
     /// 寬度
     /// - Parameter height: CGFloat
     func _width(with width: CGFloat) {
         let constraints = [widthAnchor.constraint(equalToConstant: width)]
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    /// 高度比例
+    /// - Parameters:
+    ///   - otherView: UIView
+    ///   - ratio: 倍率
+    ///   - offset: 偏移量
+    func _height(by otherView: UIView, ratio: CGFloat, offset: CGFloat) {
+        
+        let constraint = NSLayoutConstraint(
+            item: self,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: otherView,
+            attribute: .height,
+            multiplier: ratio,
+            constant: offset
+        )
+        
+        NSLayoutConstraint.activate([constraint])
+    }
+    
+    /// 寬度寬度
+    /// - Parameters:
+    ///   - otherView: UIView
+    ///   - ratio: 倍率
+    ///   - offset: 偏移量
+    func _width(by otherView: UIView, ratio: CGFloat, offset: CGFloat) {
+        
+        let constraint = NSLayoutConstraint(
+            item: self,
+            attribute: .width,
+            relatedBy: .equal,
+            toItem: otherView,
+            attribute: .width,
+            multiplier: ratio,
+            constant: offset
+        )
+        
+        NSLayoutConstraint.activate([constraint])
     }
     
     /// 垂直置中
@@ -138,6 +178,25 @@ extension UIView {
             toItem: otherView,
             attribute: .centerY,
             multiplier: multiplier,
+            constant: offset
+        )
+        
+        NSLayoutConstraint.activate([constraint])
+    }
+    
+    /// 自身長寬比 (width:height )
+    /// - Parameters:
+    ///   - ratio: 倍率
+    ///   - offset: 偏差值
+    func _aspectRatio(_ ratio: CGFloat, offset: CGFloat) {
+        
+        let constraint = NSLayoutConstraint(
+            item: self,
+            attribute: .width,
+            relatedBy: .equal,
+            toItem: self,
+            attribute: .height,
+            multiplier: ratio,
             constant: offset
         )
         

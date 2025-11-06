@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8107378C2EB9A2880063C927 /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 8107378B2EB9A2880063C927 /* WWAutolayoutConstraint */; };
-		810737A32EB9A43B0063C927 /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 810737A22EB9A43B0063C927 /* WWAutolayoutConstraint */; };
 		812A798C2EB99B1000E514DA /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 812A798B2EB99B1000E514DA /* WWAutolayoutConstraint */; };
 		812A798F2EB99D4F00E514DA /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 812A798E2EB99D4F00E514DA /* WWAutolayoutConstraint */; };
+		81BD8B802EBC511C00C28737 /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 81BD8B7F2EBC511C00C28737 /* WWAutolayoutConstraint */; };
+		81BD8B832EBC73E300C28737 /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 81BD8B822EBC73E300C28737 /* WWAutolayoutConstraint */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,8 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				810737A32EB9A43B0063C927 /* WWAutolayoutConstraint in Frameworks */,
+				81BD8B802EBC511C00C28737 /* WWAutolayoutConstraint in Frameworks */,
 				812A798F2EB99D4F00E514DA /* WWAutolayoutConstraint in Frameworks */,
+				81BD8B832EBC73E300C28737 /* WWAutolayoutConstraint in Frameworks */,
 				812A798C2EB99B1000E514DA /* WWAutolayoutConstraint in Frameworks */,
 				8107378C2EB9A2880063C927 /* WWAutolayoutConstraint in Frameworks */,
 			);
@@ -92,7 +94,8 @@
 				812A798B2EB99B1000E514DA /* WWAutolayoutConstraint */,
 				812A798E2EB99D4F00E514DA /* WWAutolayoutConstraint */,
 				8107378B2EB9A2880063C927 /* WWAutolayoutConstraint */,
-				810737A22EB9A43B0063C927 /* WWAutolayoutConstraint */,
+				81BD8B7F2EBC511C00C28737 /* WWAutolayoutConstraint */,
+				81BD8B822EBC73E300C28737 /* WWAutolayoutConstraint */,
 			);
 			productName = Example;
 			productReference = 817EE1FE2EB1FA050036B57C /* Example.app */;
@@ -123,7 +126,7 @@
 			mainGroup = 817EE1F52EB1FA050036B57C;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				810737A12EB9A43B0063C927 /* XCRemoteSwiftPackageReference "WWAutolayoutConstraint" */,
+				81BD8B812EBC73E300C28737 /* XCRemoteSwiftPackageReference "WWAutolayoutConstraint" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 817EE1FF2EB1FA050036B57C /* Products */;
@@ -367,7 +370,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		810737A12EB9A43B0063C927 /* XCRemoteSwiftPackageReference "WWAutolayoutConstraint" */ = {
+		81BD8B812EBC73E300C28737 /* XCRemoteSwiftPackageReference "WWAutolayoutConstraint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/William-Weng/WWAutolayoutConstraint";
 			requirement = {
@@ -382,17 +385,21 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = WWAutolayoutConstraint;
 		};
-		810737A22EB9A43B0063C927 /* WWAutolayoutConstraint */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 810737A12EB9A43B0063C927 /* XCRemoteSwiftPackageReference "WWAutolayoutConstraint" */;
-			productName = WWAutolayoutConstraint;
-		};
 		812A798B2EB99B1000E514DA /* WWAutolayoutConstraint */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WWAutolayoutConstraint;
 		};
 		812A798E2EB99D4F00E514DA /* WWAutolayoutConstraint */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = WWAutolayoutConstraint;
+		};
+		81BD8B7F2EBC511C00C28737 /* WWAutolayoutConstraint */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WWAutolayoutConstraint;
+		};
+		81BD8B822EBC73E300C28737 /* WWAutolayoutConstraint */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 81BD8B812EBC73E300C28737 /* XCRemoteSwiftPackageReference "WWAutolayoutConstraint" */;
 			productName = WWAutolayoutConstraint;
 		};
 /* End XCSwiftPackageProductDependency section */
