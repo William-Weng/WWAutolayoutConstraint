@@ -95,7 +95,7 @@ public extension WWAutolayoutWrapper {
     ///   - ratio: 倍率
     ///   - offset: 偏差值
     /// - Returns: Self
-    func heightRatio(by otherView: UIView, ratio: CGFloat = 1.0, offset: CGFloat = 0) -> Self {
+    func height(by otherView: UIView, ratio: CGFloat = 1.0, offset: CGFloat = 0) -> Self {
         finish()
         functionType = .heightRatio(otherView, ratio, offset)
         return self
@@ -107,7 +107,7 @@ public extension WWAutolayoutWrapper {
     ///   - ratio: 倍率
     ///   - offset: 偏差值
     /// - Returns: Self
-    func widthRatio(by otherView: UIView, ratio: CGFloat = 1.0, offset: CGFloat = 0) -> Self {
+    func width(by otherView: UIView, ratio: CGFloat = 1.0, offset: CGFloat = 0) -> Self {
         finish()
         functionType = .widthRatio(otherView, ratio, offset)
         return self
@@ -118,7 +118,7 @@ public extension WWAutolayoutWrapper {
     ///   - ratio: 倍率
     ///   - offset: 偏差值
     /// - Returns: Self
-    func aspectRatio(_ ratio: CGFloat = 1.0, offset: CGFloat = 0) -> Self {
+    func aspect(ratio: CGFloat, offset: CGFloat = 0) -> Self {
         finish()
         functionType = .aspectRatio(ratio, offset)
         return self

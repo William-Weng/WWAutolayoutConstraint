@@ -25,9 +25,9 @@ dependencies: [
 |right(by:right:)|跟右邊的間距|
 |height(\_:)|高度|
 |width(\_:)|寬度|
-|heightRatio(by:ratio:offset:)|高度比例|
-|widthRatio(by:ratio:offset:)|寬度比例|
-|aspectRatio(\_:offset:)|自身長寬比|
+|height(by:ratio:offset:)|高度比例|
+|width(by:ratio:offset:)|寬度比例|
+|aspect(ratio:offset:)|自身長寬比|
 |centerX(by:multiplier:offset:)|垂直置中|
 |centerY(by:multiplier:offset:)|水平置中|
 |finish()|完成結束|
