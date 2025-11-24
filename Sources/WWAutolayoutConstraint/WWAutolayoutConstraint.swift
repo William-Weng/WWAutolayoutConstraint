@@ -27,52 +27,52 @@ open class WWAutolayoutWrapper<T: UIView> {
 // MARK: - 公開函式
 public extension WWAutolayoutWrapper {
     
-    /// 跟上方的間距
+    /// 跟上下方的間距
     /// - Parameters:
-    ///   - otherView: UIView
-    ///   - top: CGFloat
+    ///   - otherView: 要對齊的UIView
+    ///   - yAxis: 對齊的位置
     /// - Returns: Self
-    func top(by otherView: UIView, top: CGFloat) -> Self {
+    func top(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType = .top(0)) -> Self {
         finish()
-        functionType = .top(otherView, top)
+        functionType = .top(otherView, yAxis)
         return self
     }
     
-    /// 跟下方的間距
+    /// 跟上下方的間距
     /// - Parameters:
-    ///   - otherView: UIView
-    ///   - bottom: CGFloat
+    ///   - otherView: 要對齊的UIView
+    ///   - yAxis: 對齊的位置
     /// - Returns: Self
-    func bottom(by otherView: UIView, bottom: CGFloat) -> Self {
+    func bottom(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType = .bottom(0)) -> Self {
         finish()
-        functionType = .bottom(otherView, bottom)
+        functionType = .bottom(otherView, yAxis)
         return self
     }
     
-    /// 跟左邊的間距
+    /// 跟左右邊的間距
     /// - Parameters:
-    ///   - otherView: UIView
-    ///   - bottom: CGFloat
+    ///   - otherView: 要對齊的UIView
+    ///   - xAxis: 對齊的位置
     /// - Returns: Self
-    func left(by otherView: UIView, left: CGFloat) -> Self {
+    func left(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .left(0)) -> Self {
         finish()
-        functionType = .left(otherView, left)
+        functionType = .left(otherView, xAxis)
         return self
     }
     
-    /// 跟右邊的間距
+    /// 跟左右邊的間距
     /// - Parameters:
-    ///   - otherView: UIView
-    ///   - right: CGFloat
+    ///   - otherView: 要對齊的UIView
+    ///   - xAxis: 對齊的位置
     /// - Returns: Self
-    func right(by otherView: UIView, left: CGFloat) -> Self {
+    func right(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .right(0)) -> Self {
         finish()
-        functionType = .left(otherView, left)
+        functionType = .left(otherView, xAxis)
         return self
     }
     
     /// 高度
-    /// - Parameter height: CGFloat
+    /// - Parameter height: 高度
     /// - Returns: Self
     func height(_ height: CGFloat) -> Self {
         finish()
@@ -81,7 +81,7 @@ public extension WWAutolayoutWrapper {
     }
     
     /// 寬度
-    /// - Parameter height: CGFloat
+    /// - Parameter height: 寬度
     /// - Returns: Self
     func width(_ width: CGFloat) -> Self {
         finish()
@@ -91,7 +91,7 @@ public extension WWAutolayoutWrapper {
         
     /// 高度比例
     /// - Parameters:
-    ///   - otherView: UIView
+    ///   - otherView: 要對齊的UIView
     ///   - ratio: 倍率
     ///   - offset: 偏差值
     /// - Returns: Self
@@ -103,7 +103,7 @@ public extension WWAutolayoutWrapper {
     
     /// 寬度比例
     /// - Parameters:
-    ///   - otherView: UIView
+    ///   - otherView: 要對齊的UIView
     ///   - ratio: 倍率
     ///   - offset: 偏差值
     /// - Returns: Self
@@ -126,7 +126,7 @@ public extension WWAutolayoutWrapper {
     
     /// 垂直置中
     /// - Parameters:
-    ///   - otherView: UIView
+    ///   - otherView: 要對齊的UIView
     ///   - multiplier: 倍率
     ///   - offset: 偏差值
     /// - Returns: Self
@@ -138,7 +138,7 @@ public extension WWAutolayoutWrapper {
     
     /// 水平置中
     /// - Parameters:
-    ///   - otherView: UIView
+    ///   - otherView: 要對齊的UIView
     ///   - multiplier: 倍率
     ///   - offset: 偏差值
     /// - Returns: Self
@@ -183,10 +183,10 @@ public extension WWAutolayoutWrapper {
         switch functionType {
         case .cover(let superView): view._autolayout(on: superView)
         case .center(let superView, let top, let left): view._autolayout(centerOn: superView, top: top, left: left)
-        case .top(let superView, let top): view._top(by: superView, top: top)
-        case .bottom(let superView, let bottom): view._bottom(by: superView, bottom: bottom)
-        case .left(let superView, let left): view._left(by: superView, left: left)
-        case .right(let superView, let right): view._right(by: superView, right: right)
+        case .top(let superView, let yAxis): view._top(by: superView, yAxis: yAxis)
+        case .bottom(let superView, let yAxis): view._bottom(by: superView, yAxis: yAxis)
+        case .left(let superView, let xAxis): view._left(by: superView, xAxis: xAxis)
+        case .right(let superView, let xAxis): view._right(by: superView, xAxis: xAxis)
         case .height(let height): view._height(with: height)
         case .width(let width): view._width(with: width)
         case .heightRatio(let otherView, let ratio, let offset): view._height(by: otherView, ratio: ratio, offset: offset)

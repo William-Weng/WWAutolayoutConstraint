@@ -54,39 +54,67 @@ extension UIView {
 // MARK: - UIView
 extension UIView {
     
-    /// 跟上方的間距
+    /// 跟上下方的間距
     /// - Parameters:
-    ///   - otherView: UIView
-    ///   - top: CGFloat
-    func _top(by otherView: UIView, top: CGFloat = .zero) {
-        let constraints = [topAnchor.constraint(equalTo: otherView.topAnchor, constant: top)]
+    ///   - otherView: 要對齊的UIView
+    ///   - yAxis: 對齊的位置
+    func _top(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType) {
+        
+        let constraints: [NSLayoutConstraint]
+        
+        switch yAxis {
+        case .top(let offset): constraints = [topAnchor.constraint(equalTo: otherView.topAnchor, constant: offset)]
+        case .bottom(let offset): constraints = [topAnchor.constraint(equalTo: otherView.bottomAnchor, constant: offset)]
+        }
+        
         NSLayoutConstraint.activate(constraints)
     }
     
-    /// 跟下方的間距
+    /// 跟上下方的間距
     /// - Parameters:
-    ///   - otherView: UIView
-    ///   - bottom: CGFloat
-    func _bottom(by otherView: UIView, bottom: CGFloat = .zero) {
-        let constraints = [bottomAnchor.constraint(equalTo: otherView.bottomAnchor, constant: bottom)]
+    ///   - otherView: 要對齊的UIView
+    ///   - yAxis: 對齊的位置
+    func _bottom(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType) {
+        
+        let constraints: [NSLayoutConstraint]
+        
+        switch yAxis {
+        case .top(let offset): constraints = [bottomAnchor.constraint(equalTo: otherView.topAnchor, constant: offset)]
+        case .bottom(let offset): constraints = [bottomAnchor.constraint(equalTo: otherView.bottomAnchor, constant: offset)]
+        }
+        
         NSLayoutConstraint.activate(constraints)
     }
     
-    /// 跟左邊的間距
+    /// 跟左右邊的間距
     /// - Parameters:
-    ///   - otherView: UIView
-    ///   - bottom: CGFloat
-    func _left(by otherView: UIView, left: CGFloat = .zero) {
-        let constraints = [leadingAnchor.constraint(equalTo: otherView.leadingAnchor, constant: left)]
+    ///   - otherView: 要對齊的UIView
+    ///   - xAxis: 對齊的位置
+    func _left(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType) {
+        
+        let constraints: [NSLayoutConstraint]
+        
+        switch xAxis {
+        case .left(let offset): constraints = [leadingAnchor.constraint(equalTo: otherView.leadingAnchor, constant: offset)]
+        case .right(let offset): constraints = [leadingAnchor.constraint(equalTo: otherView.trailingAnchor, constant: offset)]
+        }
+        
         NSLayoutConstraint.activate(constraints)
     }
     
-    /// 跟右邊的間距
+    /// 跟左右邊的間距
     /// - Parameters:
-    ///   - otherView: UIView
-    ///   - right: CGFloat
-    func _right(by otherView: UIView, right: CGFloat = .zero) {
-        let constraints = [trailingAnchor.constraint(equalTo: otherView.trailingAnchor, constant: right)]
+    ///   - otherView: 要對齊的UIView
+    ///   - xAxis: 對齊的位置
+    func _right(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType) {
+        
+        let constraints: [NSLayoutConstraint]
+        
+        switch xAxis {
+        case .left(let offset): constraints = [trailingAnchor.constraint(equalTo: otherView.leadingAnchor, constant: offset)]
+        case .right(let offset): constraints = [trailingAnchor.constraint(equalTo: otherView.trailingAnchor, constant: offset)]
+        }
+        
         NSLayoutConstraint.activate(constraints)
     }
     

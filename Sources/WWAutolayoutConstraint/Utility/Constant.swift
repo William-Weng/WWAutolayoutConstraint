@@ -10,14 +10,26 @@ import UIKit
 // MARK: - enum
 public extension WWAutolayoutWrapper {
     
+    /// X軸位置 + 偏移量
+    enum XAxisType {
+        case left(_ offset: CGFloat)
+        case right(_ offset: CGFloat)
+    }
+    
+    /// Y軸位置 + 偏移量
+    enum YAxisType {
+        case top(_ offset: CGFloat)
+        case bottom(_ offset: CGFloat)
+    }
+    
     /// 函數類型
     enum FunctionType {
         case cover(_ superView: UIView)
         case center(_ superView: UIView, _ top: CGFloat?, _ left: CGFloat?)
-        case top(_ superView: UIView, _ top: CGFloat)
-        case bottom(_ superView: UIView, _ bottom: CGFloat)
-        case left(_ superView: UIView, _ left: CGFloat)
-        case right(_ superView: UIView, _ right: CGFloat)
+        case top(_ superView: UIView, _ yAxis: WWAutolayoutWrapper<UIView>.YAxisType)
+        case bottom(_ superView: UIView, _ yAxis: WWAutolayoutWrapper<UIView>.YAxisType)
+        case left(_ superView: UIView, _ xAxis: WWAutolayoutWrapper<UIView>.XAxisType)
+        case right(_ superView: UIView, _ xAxis: WWAutolayoutWrapper<UIView>.XAxisType)
         case height(_ height: CGFloat)
         case width(_ width: CGFloat)
         case heightRatio(_ otherView: UIView, _ ratio: CGFloat, _ offset: CGFloat)
