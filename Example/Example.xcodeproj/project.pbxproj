@@ -11,7 +11,7 @@
 		812A798C2EB99B1000E514DA /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 812A798B2EB99B1000E514DA /* WWAutolayoutConstraint */; };
 		812A798F2EB99D4F00E514DA /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 812A798E2EB99D4F00E514DA /* WWAutolayoutConstraint */; };
 		8168D9422ED405F40091699A /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 8168D9412ED405F40091699A /* WWAutolayoutConstraint */; };
-		8168D9452ED40C4C0091699A /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 8168D9442ED40C4C0091699A /* WWAutolayoutConstraint */; };
+		8168D9482ED40D1F0091699A /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 8168D9472ED40D1F0091699A /* WWAutolayoutConstraint */; };
 		81BD8B802EBC511C00C28737 /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 81BD8B7F2EBC511C00C28737 /* WWAutolayoutConstraint */; };
 		81BD8B862EBC849B00C28737 /* WWAutolayoutConstraint in Frameworks */ = {isa = PBXBuildFile; productRef = 81BD8B852EBC849B00C28737 /* WWAutolayoutConstraint */; };
 /* End PBXBuildFile section */
@@ -48,7 +48,7 @@
 			files = (
 				81BD8B802EBC511C00C28737 /* WWAutolayoutConstraint in Frameworks */,
 				812A798F2EB99D4F00E514DA /* WWAutolayoutConstraint in Frameworks */,
-				8168D9452ED40C4C0091699A /* WWAutolayoutConstraint in Frameworks */,
+				8168D9482ED40D1F0091699A /* WWAutolayoutConstraint in Frameworks */,
 				8168D9422ED405F40091699A /* WWAutolayoutConstraint in Frameworks */,
 				81BD8B862EBC849B00C28737 /* WWAutolayoutConstraint in Frameworks */,
 				812A798C2EB99B1000E514DA /* WWAutolayoutConstraint in Frameworks */,
@@ -101,7 +101,7 @@
 				81BD8B7F2EBC511C00C28737 /* WWAutolayoutConstraint */,
 				81BD8B852EBC849B00C28737 /* WWAutolayoutConstraint */,
 				8168D9412ED405F40091699A /* WWAutolayoutConstraint */,
-				8168D9442ED40C4C0091699A /* WWAutolayoutConstraint */,
+				8168D9472ED40D1F0091699A /* WWAutolayoutConstraint */,
 			);
 			productName = Example;
 			productReference = 817EE1FE2EB1FA050036B57C /* Example.app */;
@@ -132,7 +132,7 @@
 			mainGroup = 817EE1F52EB1FA050036B57C;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				8168D9432ED40C4C0091699A /* XCRemoteSwiftPackageReference "WWAutolayoutConstraint" */,
+				8168D9462ED40D1F0091699A /* XCLocalSwiftPackageReference "../../WWAutolayoutConstraint" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 817EE1FF2EB1FA050036B57C /* Products */;
@@ -375,16 +375,12 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		8168D9432ED40C4C0091699A /* XCRemoteSwiftPackageReference "WWAutolayoutConstraint" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/William-Weng/WWAutolayoutConstraint";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.2;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		8168D9462ED40D1F0091699A /* XCLocalSwiftPackageReference "../../WWAutolayoutConstraint" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../WWAutolayoutConstraint;
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		8107378B2EB9A2880063C927 /* WWAutolayoutConstraint */ = {
@@ -403,9 +399,8 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = WWAutolayoutConstraint;
 		};
-		8168D9442ED40C4C0091699A /* WWAutolayoutConstraint */ = {
+		8168D9472ED40D1F0091699A /* WWAutolayoutConstraint */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8168D9432ED40C4C0091699A /* XCRemoteSwiftPackageReference "WWAutolayoutConstraint" */;
 			productName = WWAutolayoutConstraint;
 		};
 		81BD8B7F2EBC511C00C28737 /* WWAutolayoutConstraint */ = {

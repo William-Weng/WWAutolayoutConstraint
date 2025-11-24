@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/43cb7730-cb7a-40b8-89ef-08c88125332c
 ### [Installation with Swift Package Manager](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/使用-spm-安裝第三方套件-xcode-11-新功能-2c4ffcf85b4b)
 ```bash
 dependencies: [
-    .package(url: "https://github.com/William-Weng/WWAutolayoutConstraint.git", .upToNextMajor(from: "0.6.2"))
+    .package(url: "https://github.com/William-Weng/WWAutolayoutConstraint.git", .upToNextMajor(from: "0.6.3"))
 ]
 ```
 
@@ -19,10 +19,10 @@ dependencies: [
 |-|-|
 |cover(on:)|完全蓋在上面|
 |center(on:top:left:)|畫面置中|
-|top(by:yAxis:)|跟上下方的間距|
-|bottom(by:yAxis:)|跟上下方的間距|
-|left(by:xAxis:)|跟左右邊的間距|
-|right(by:xAxis:)|跟左右邊的間距|
+|top(by:yAxis:useSafeArea:)|跟上下方的間距|
+|bottom(by:yAxis:useSafeArea:)|跟上下方的間距|
+|left(by:xAxis:useSafeArea:)|跟左右邊的間距|
+|right(by:xAxis:useSafeArea:)|跟左右邊的間距|
 |height(\_:)|高度|
 |width(\_:)|寬度|
 |height(by:ratio:offset:)|高度比例|

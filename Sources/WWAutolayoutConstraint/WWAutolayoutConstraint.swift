@@ -31,10 +31,11 @@ public extension WWAutolayoutWrapper {
     /// - Parameters:
     ///   - otherView: 要對齊的UIView
     ///   - yAxis: 對齊的位置
+    ///   - useSafearea: 使用安全區域
     /// - Returns: Self
-    func top(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType = .top(0)) -> Self {
+    func top(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType = .top(0), useSafeArea: Bool = false) -> Self {
         finish()
-        functionType = .top(otherView, yAxis)
+        functionType = .top(otherView, yAxis, useSafeArea)
         return self
     }
     
@@ -42,10 +43,11 @@ public extension WWAutolayoutWrapper {
     /// - Parameters:
     ///   - otherView: 要對齊的UIView
     ///   - yAxis: 對齊的位置
+    ///   - useSafearea: 使用安全區域
     /// - Returns: Self
-    func bottom(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType = .bottom(0)) -> Self {
+    func bottom(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType = .bottom(0), useSafeArea: Bool = false) -> Self {
         finish()
-        functionType = .bottom(otherView, yAxis)
+        functionType = .bottom(otherView, yAxis, useSafeArea)
         return self
     }
     
@@ -53,10 +55,11 @@ public extension WWAutolayoutWrapper {
     /// - Parameters:
     ///   - otherView: 要對齊的UIView
     ///   - xAxis: 對齊的位置
+    ///   - useSafearea: 使用安全區域
     /// - Returns: Self
-    func left(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .left(0)) -> Self {
+    func left(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .left(0), useSafeArea: Bool = false) -> Self {
         finish()
-        functionType = .left(otherView, xAxis)
+        functionType = .left(otherView, xAxis, useSafeArea)
         return self
     }
     
@@ -64,10 +67,11 @@ public extension WWAutolayoutWrapper {
     /// - Parameters:
     ///   - otherView: 要對齊的UIView
     ///   - xAxis: 對齊的位置
+    ///   - useSafearea: 使用安全區域
     /// - Returns: Self
-    func right(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .right(0)) -> Self {
+    func right(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .right(0), useSafeArea: Bool = false) -> Self {
         finish()
-        functionType = .left(otherView, xAxis)
+        functionType = .left(otherView, xAxis, useSafeArea)
         return self
     }
     
@@ -183,10 +187,10 @@ public extension WWAutolayoutWrapper {
         switch functionType {
         case .cover(let superView): view._autolayout(on: superView)
         case .center(let superView, let top, let left): view._autolayout(centerOn: superView, top: top, left: left)
-        case .top(let superView, let yAxis): view._top(by: superView, yAxis: yAxis)
-        case .bottom(let superView, let yAxis): view._bottom(by: superView, yAxis: yAxis)
-        case .left(let superView, let xAxis): view._left(by: superView, xAxis: xAxis)
-        case .right(let superView, let xAxis): view._right(by: superView, xAxis: xAxis)
+        case .top(let superView, let yAxis, let useSafeArea): view._top(by: superView, yAxis: yAxis, useSafeArea: useSafeArea)
+        case .bottom(let superView, let yAxis, let useSafeArea): view._bottom(by: superView, yAxis: yAxis, useSafeArea: useSafeArea)
+        case .left(let superView, let xAxis, let useSafeArea): view._left(by: superView, xAxis: xAxis, useSafeArea: useSafeArea)
+        case .right(let superView, let xAxis, let useSafeArea): view._right(by: superView, xAxis: xAxis, useSafeArea: useSafeArea)
         case .height(let height): view._height(with: height)
         case .width(let width): view._width(with: width)
         case .heightRatio(let otherView, let ratio, let offset): view._height(by: otherView, ratio: ratio, offset: offset)

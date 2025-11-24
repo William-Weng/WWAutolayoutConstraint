@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - enum
 public extension WWAutolayoutWrapper {
-    
+        
     /// X軸位置 + 偏移量
     enum XAxisType {
         case left(_ offset: CGFloat)
@@ -26,10 +26,10 @@ public extension WWAutolayoutWrapper {
     enum FunctionType {
         case cover(_ superView: UIView)
         case center(_ superView: UIView, _ top: CGFloat?, _ left: CGFloat?)
-        case top(_ superView: UIView, _ yAxis: WWAutolayoutWrapper<UIView>.YAxisType)
-        case bottom(_ superView: UIView, _ yAxis: WWAutolayoutWrapper<UIView>.YAxisType)
-        case left(_ superView: UIView, _ xAxis: WWAutolayoutWrapper<UIView>.XAxisType)
-        case right(_ superView: UIView, _ xAxis: WWAutolayoutWrapper<UIView>.XAxisType)
+        case top(_ superView: UIView, _ yAxis: WWAutolayoutWrapper<UIView>.YAxisType, _ useSafeArea: Bool)
+        case bottom(_ superView: UIView, _ yAxis: WWAutolayoutWrapper<UIView>.YAxisType, _ useSafeArea: Bool)
+        case left(_ superView: UIView, _ xAxis: WWAutolayoutWrapper<UIView>.XAxisType, _ useSafeArea: Bool)
+        case right(_ superView: UIView, _ xAxis: WWAutolayoutWrapper<UIView>.XAxisType, _ useSafeArea: Bool)
         case height(_ height: CGFloat)
         case width(_ width: CGFloat)
         case heightRatio(_ otherView: UIView, _ ratio: CGFloat, _ offset: CGFloat)

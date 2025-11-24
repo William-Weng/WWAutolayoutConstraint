@@ -13,7 +13,7 @@ extension UIView {
     /// [設定LayoutConstraint => 不能加frame](https://zonble.gitbooks.io/kkbox-ios-dev/content/autolayout/intrinsic_content_size.html)
     /// - Parameter superView: [此View的SuperView](https://www.appcoda.com.tw/auto-layout-programmatically/)
     func _autolayout(on superView: UIView) {
-
+        
         removeFromSuperview()
         superView.addSubview(self)
         
@@ -58,13 +58,18 @@ extension UIView {
     /// - Parameters:
     ///   - otherView: 要對齊的UIView
     ///   - yAxis: 對齊的位置
-    func _top(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType) {
+    ///   - useSafearea: 使用安全區域
+    func _top(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType, useSafeArea: Bool) {
         
         let constraints: [NSLayoutConstraint]
         
         switch yAxis {
-        case .top(let offset): constraints = [topAnchor.constraint(equalTo: otherView.topAnchor, constant: offset)]
-        case .bottom(let offset): constraints = [topAnchor.constraint(equalTo: otherView.bottomAnchor, constant: offset)]
+        case .top(let offset):
+            let _topAnchor = useSafeArea ? otherView.safeAreaLayoutGuide.topAnchor : otherView.topAnchor
+            constraints = [topAnchor.constraint(equalTo: _topAnchor, constant: offset)]
+        case .bottom(let offset):
+            let _bottomAnchor = useSafeArea ? otherView.safeAreaLayoutGuide.bottomAnchor : otherView.bottomAnchor
+            constraints = [topAnchor.constraint(equalTo: _bottomAnchor, constant: offset)]
         }
         
         NSLayoutConstraint.activate(constraints)
@@ -74,13 +79,18 @@ extension UIView {
     /// - Parameters:
     ///   - otherView: 要對齊的UIView
     ///   - yAxis: 對齊的位置
-    func _bottom(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType) {
+    ///   - useSafearea: 使用安全區域
+    func _bottom(by otherView: UIView, yAxis: WWAutolayoutWrapper<UIView>.YAxisType, useSafeArea: Bool) {
         
         let constraints: [NSLayoutConstraint]
         
         switch yAxis {
-        case .top(let offset): constraints = [bottomAnchor.constraint(equalTo: otherView.topAnchor, constant: offset)]
-        case .bottom(let offset): constraints = [bottomAnchor.constraint(equalTo: otherView.bottomAnchor, constant: offset)]
+        case .top(let offset):
+            let _topAnchor = useSafeArea ? otherView.safeAreaLayoutGuide.topAnchor : otherView.topAnchor
+            constraints = [bottomAnchor.constraint(equalTo: _topAnchor, constant: offset)]
+        case .bottom(let offset):
+            let _bottomAnchor = useSafeArea ? otherView.safeAreaLayoutGuide.bottomAnchor : otherView.bottomAnchor
+            constraints = [bottomAnchor.constraint(equalTo: _bottomAnchor, constant: offset)]
         }
         
         NSLayoutConstraint.activate(constraints)
@@ -90,13 +100,18 @@ extension UIView {
     /// - Parameters:
     ///   - otherView: 要對齊的UIView
     ///   - xAxis: 對齊的位置
-    func _left(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType) {
+    ///   - useSafearea: 使用安全區域
+    func _left(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType, useSafeArea: Bool) {
         
         let constraints: [NSLayoutConstraint]
         
         switch xAxis {
-        case .left(let offset): constraints = [leadingAnchor.constraint(equalTo: otherView.leadingAnchor, constant: offset)]
-        case .right(let offset): constraints = [leadingAnchor.constraint(equalTo: otherView.trailingAnchor, constant: offset)]
+        case .left(let offset):
+            let _leadingAnchor = useSafeArea ? otherView.safeAreaLayoutGuide.leadingAnchor : otherView.leadingAnchor
+            constraints = [leadingAnchor.constraint(equalTo: _leadingAnchor, constant: offset)]
+        case .right(let offset):
+            let _trailingAnchor = useSafeArea ? otherView.safeAreaLayoutGuide.trailingAnchor : otherView.trailingAnchor
+            constraints = [leadingAnchor.constraint(equalTo: _trailingAnchor, constant: offset)]
         }
         
         NSLayoutConstraint.activate(constraints)
@@ -106,13 +121,18 @@ extension UIView {
     /// - Parameters:
     ///   - otherView: 要對齊的UIView
     ///   - xAxis: 對齊的位置
-    func _right(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType) {
+    ///   - useSafearea: 使用安全區域
+    func _right(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType, useSafeArea: Bool) {
         
         let constraints: [NSLayoutConstraint]
         
         switch xAxis {
-        case .left(let offset): constraints = [trailingAnchor.constraint(equalTo: otherView.leadingAnchor, constant: offset)]
-        case .right(let offset): constraints = [trailingAnchor.constraint(equalTo: otherView.trailingAnchor, constant: offset)]
+        case .left(let offset):
+            let _leadingAnchor = useSafeArea ? safeAreaLayoutGuide.leadingAnchor : otherView.leadingAnchor
+            constraints = [trailingAnchor.constraint(equalTo: _leadingAnchor, constant: offset)]
+        case .right(let offset):
+            let _trailingAnchor = useSafeArea ? safeAreaLayoutGuide.trailingAnchor : otherView.trailingAnchor
+            constraints = [trailingAnchor.constraint(equalTo: _trailingAnchor, constant: offset)]
         }
         
         NSLayoutConstraint.activate(constraints)
