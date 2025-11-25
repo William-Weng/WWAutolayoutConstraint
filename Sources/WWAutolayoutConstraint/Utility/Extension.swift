@@ -255,38 +255,20 @@ extension UIView {
 // MARK: - 更新約束
 extension UIView {
     
-    /// 更新高度約束
-    /// - Parameter height: CGFloat
-    func _updateHeight(_ height: CGFloat) {
-        _updateConstraint(firstAttribute: .height) { _height(with: height) }
-    }
-    
-    /// 更新寬度約束
-    /// - Parameter height: CGFloat
-    func _updateWidth(_ width: CGFloat) {
-        _updateConstraint(firstAttribute: .width) { _width(with: width) }
-    }
-}
-
-// MARK: - 更新約束
-private extension UIView {
-    
-    /// 更新約束
+    /// 搜尋約束
     /// - Parameters:
     ///   - firstAttribute: 要更新的屬性
     ///   - clourse: 更新的動作
-    func _updateConstraint(firstAttribute: NSLayoutConstraint.Attribute, clourse: () -> Void) {
+    func _findConstraint(attribute: NSLayoutConstraint.Attribute, clourse: (NSLayoutConstraint?) -> Void) {
         
+        var constraint: NSLayoutConstraint? = nil
         var canUpdate = false
         
         constraints.forEach {
-            
-            if ($0.firstAttribute == firstAttribute) {
-                $0.isActive = false
-                canUpdate = true
-            }
+            if ($0.firstAttribute == attribute || $0.secondAttribute == attribute) { constraint = $0 }
         }
         
-        if (canUpdate) { clourse() }
+        if let constraint = constraint { clourse(constraint); return }
+        if let superview = superview { superview._findConstraint(attribute: attribute, clourse: clourse) }
     }
 }

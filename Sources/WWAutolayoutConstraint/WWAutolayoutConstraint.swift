@@ -57,9 +57,9 @@ public extension WWAutolayoutWrapper {
     ///   - xAxis: 對齊的位置
     ///   - useSafearea: 使用安全區域
     /// - Returns: Self
-    func left(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .left(0), useSafeArea: Bool = false) -> Self {
+    func leading(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .left(0), useSafeArea: Bool = false) -> Self {
         finish()
-        functionType = .left(otherView, xAxis, useSafeArea)
+        functionType = .leading(otherView, xAxis, useSafeArea)
         return self
     }
     
@@ -69,9 +69,9 @@ public extension WWAutolayoutWrapper {
     ///   - xAxis: 對齊的位置
     ///   - useSafearea: 使用安全區域
     /// - Returns: Self
-    func right(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .right(0), useSafeArea: Bool = false) -> Self {
+    func trailing(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .right(0), useSafeArea: Bool = false) -> Self {
         finish()
-        functionType = .left(otherView, xAxis, useSafeArea)
+        functionType = .trailing(otherView, xAxis, useSafeArea)
         return self
     }
     
@@ -156,19 +156,67 @@ public extension WWAutolayoutWrapper {
 // MARK: - 公開函式
 public extension WWAutolayoutWrapper {
     
-    /// 更新寬度約束
-    /// - Parameter CGFloat: 寬度大小
-    func updateWidth(_ width: CGFloat) -> Self {
+    /// 更新上下約束
+    /// - Parameter CGFloat: 約束大小
+    func updateTop(_ value: CGFloat) -> Self {
         finish()
-        functionType = .update(.width(width))
+        functionType = .update((.top, value))
+        return self
+    }
+    
+    /// 更新上下約束
+    /// - Parameter CGFloat: 約束大小
+    func updateBottom(_ value: CGFloat) -> Self {
+        finish()
+        functionType = .update((.bottom, value))
+        return self
+    }
+    
+    /// 更新左右約束
+    /// - Parameter CGFloat: 約束大小
+    func updateLeading(_ value: CGFloat) -> Self {
+        finish()
+        functionType = .update((.leading, value))
+        return self
+    }
+    
+    /// 更新左右約束
+    /// - Parameter CGFloat: 約束大小
+    func updateTrailing(_ value: CGFloat) -> Self {
+        finish()
+        functionType = .update((.trailing, value))
+        return self
+    }
+    
+    /// 更新寬度約束
+    /// - Parameter CGFloat: 約束大小
+    func updateWidth(_ value: CGFloat) -> Self {
+        finish()
+        functionType = .update((.width, value))
         return self
     }
     
     /// 更新高度約束
-    /// - Parameter CGFloat: 高度大小
-    func updateHeight(_ height: CGFloat) -> Self {
+    /// - Parameter CGFloat: 約束大小
+    func updateHeight(_ value: CGFloat) -> Self {
         finish()
-        functionType = .update(.height(height))
+        functionType = .update((.height, value))
+        return self
+    }
+    
+    /// 更新垂直約束
+    /// - Parameter CGFloat: 約束大小
+    func updateCenterX(_ value: CGFloat) -> Self {
+        finish()
+        functionType = .update((.centerX, value))
+        return self
+    }
+    
+    /// 更新水平約束
+    /// - Parameter CGFloat: 約束大小
+    func updateCenterY(_ value: CGFloat) -> Self {
+        finish()
+        functionType = .update((.centerY, value))
         return self
     }
 }
@@ -209,8 +257,8 @@ public extension WWAutolayoutWrapper {
         case .center(let superView, let top, let left): view._autolayout(centerOn: superView, top: top, left: left)
         case .top(let superView, let yAxis, let useSafeArea): view._top(by: superView, yAxis: yAxis, useSafeArea: useSafeArea)
         case .bottom(let superView, let yAxis, let useSafeArea): view._bottom(by: superView, yAxis: yAxis, useSafeArea: useSafeArea)
-        case .left(let superView, let xAxis, let useSafeArea): view._left(by: superView, xAxis: xAxis, useSafeArea: useSafeArea)
-        case .right(let superView, let xAxis, let useSafeArea): view._right(by: superView, xAxis: xAxis, useSafeArea: useSafeArea)
+        case .leading(let superView, let xAxis, let useSafeArea): view._left(by: superView, xAxis: xAxis, useSafeArea: useSafeArea)
+        case .trailing(let superView, let xAxis, let useSafeArea): view._right(by: superView, xAxis: xAxis, useSafeArea: useSafeArea)
         case .height(let height): view._height(with: height)
         case .width(let width): view._width(with: width)
         case .heightRatio(let otherView, let ratio, let offset): view._height(by: otherView, ratio: ratio, offset: offset)
@@ -218,7 +266,7 @@ public extension WWAutolayoutWrapper {
         case .aspectRatio(let ratio, let offset): view._aspectRatio(ratio, offset: offset)
         case .centerX(let otherView, let multiplier, let offset): view._centerX(by: otherView, multiplier: multiplier, offset: offset)
         case .centerY(let otherView, let multiplier, let offset): view._centerY(by: otherView, multiplier: multiplier, offset: offset)
-        case .update(let type): updateConstraint(with: type)
+        case .update(let info): updateConstraint(with: info)
         }
         
         self.functionType = nil
@@ -228,12 +276,16 @@ public extension WWAutolayoutWrapper {
 // MARK: - 小工具
 private extension WWAutolayoutWrapper {
     
-    /// 更新約束 - 長 / 寬
-    /// - Parameter type: WWAutolayoutWrapper<T>.ConstraintType
-    func updateConstraint(with type: WWAutolayoutWrapper<T>.ConstraintType) {
-        switch type {
-        case .height(let height): view._updateHeight(height)
-        case .width(let width): view._updateWidth(width)
+    /// 更新約束
+    /// - Parameter type: WWAutolayoutWrapper<T>.ConstraintInformation
+    func updateConstraint(with info: WWAutolayoutWrapper<T>.ConstraintInformation) {
+        
+        let attribute: NSLayoutConstraint.Attribute
+        let constant: CGFloat
+        
+        view._findConstraint(attribute: info.type) { constraint in
+            guard let constraint = constraint else { return }
+            constraint.constant = info.value
         }
     }
 }

@@ -7,9 +7,15 @@
 
 import UIKit
 
+// MARK: - typealias
+public extension WWAutolayoutWrapper {
+    
+    typealias ConstraintInformation = (type: NSLayoutConstraint.Attribute, value: CGFloat)  // 約束 (類型, 數值)
+}
+
 // MARK: - enum
 public extension WWAutolayoutWrapper {
-        
+    
     /// X軸位置 + 偏移量
     enum XAxisType {
         case left(_ offset: CGFloat)
@@ -21,21 +27,15 @@ public extension WWAutolayoutWrapper {
         case top(_ offset: CGFloat)
         case bottom(_ offset: CGFloat)
     }
-    
-    /// 約束類型
-    enum ConstraintType {
-        case width(_ width: CGFloat)
-        case height(_ height: CGFloat)
-    }
-    
+        
     /// 函數類型
     enum FunctionType {
         case cover(_ superView: UIView)
         case center(_ superView: UIView, _ top: CGFloat?, _ left: CGFloat?)
         case top(_ superView: UIView, _ yAxis: WWAutolayoutWrapper<UIView>.YAxisType, _ useSafeArea: Bool)
         case bottom(_ superView: UIView, _ yAxis: WWAutolayoutWrapper<UIView>.YAxisType, _ useSafeArea: Bool)
-        case left(_ superView: UIView, _ xAxis: WWAutolayoutWrapper<UIView>.XAxisType, _ useSafeArea: Bool)
-        case right(_ superView: UIView, _ xAxis: WWAutolayoutWrapper<UIView>.XAxisType, _ useSafeArea: Bool)
+        case leading(_ superView: UIView, _ xAxis: WWAutolayoutWrapper<UIView>.XAxisType, _ useSafeArea: Bool)
+        case trailing(_ superView: UIView, _ xAxis: WWAutolayoutWrapper<UIView>.XAxisType, _ useSafeArea: Bool)
         case height(_ height: CGFloat)
         case width(_ width: CGFloat)
         case heightRatio(_ otherView: UIView, _ ratio: CGFloat, _ offset: CGFloat)
@@ -43,6 +43,6 @@ public extension WWAutolayoutWrapper {
         case aspectRatio(_ ratio: CGFloat, _ offset: CGFloat)
         case centerX(_ otherView: UIView, _ multiplier: CGFloat, _ offset: CGFloat)
         case centerY(_ otherView: UIView, _ multiplier: CGFloat, _ offset: CGFloat)
-        case update(_ type: ConstraintType)
+        case update(_ info: ConstraintInformation)
     }
 }

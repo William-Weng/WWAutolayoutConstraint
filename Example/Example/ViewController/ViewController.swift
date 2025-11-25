@@ -10,34 +10,33 @@ import WWAutolayoutConstraint
 
 final class ViewController: UIViewController {
     
-    private lazy var coverView: UIView = {
-        
-        let coverView = UIView()
-        coverView.backgroundColor = .systemOrange
-        self.view.addSubview(coverView)
-        
-        return coverView
-    }()
-    
     private lazy var centerView = {
         
         let centerView = UIView()
         centerView.backgroundColor = .yellow
-        self.view.addSubview(centerView)
+        view.addSubview(centerView)
         
         return centerView
     }()
     
-    @IBAction func coverAction(_ sender: UIBarButtonItem) {
-        coverView.autolayout.cover(on: view)
+    @IBAction func updatCenterAction(_ sender: UIBarButtonItem) {
+        
+        centerView.autolayout
+            .updateWidth(200)
+            .updateHeight(400)
+            .updateCenterY(100)
+            .finish()
+        
+        UIView.animate(withDuration: 1.0) { self.view.layoutIfNeeded() }
     }
     
     @IBAction func centerAction(_ sender: UIBarButtonItem) {
+        
         centerView.autolayout
             .centerX(by: view)
-            .centerY(by: view, multiplier: 0.5)
+            .centerY(by: view, multiplier: 1.0)
+            .width(50)
             .height(100)
-            .width(100)
             .finish()
     }
 }
