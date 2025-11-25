@@ -22,6 +22,12 @@ public extension WWAutolayoutWrapper {
         case bottom(_ offset: CGFloat)
     }
     
+    /// 約束類型
+    enum ConstraintType {
+        case width(_ width: CGFloat)
+        case height(_ height: CGFloat)
+    }
+    
     /// 函數類型
     enum FunctionType {
         case cover(_ superView: UIView)
@@ -37,5 +43,6 @@ public extension WWAutolayoutWrapper {
         case aspectRatio(_ ratio: CGFloat, _ offset: CGFloat)
         case centerX(_ otherView: UIView, _ multiplier: CGFloat, _ offset: CGFloat)
         case centerY(_ otherView: UIView, _ multiplier: CGFloat, _ offset: CGFloat)
+        case update(_ type: ConstraintType)
     }
 }

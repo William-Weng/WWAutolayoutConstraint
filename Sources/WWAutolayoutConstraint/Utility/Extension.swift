@@ -144,7 +144,7 @@ extension UIView {
         let constraints = [heightAnchor.constraint(equalToConstant: height)]
         NSLayoutConstraint.activate(constraints)
     }
-        
+    
     /// 寬度
     /// - Parameter height: CGFloat
     func _width(with width: CGFloat) {
@@ -232,7 +232,7 @@ extension UIView {
         NSLayoutConstraint.activate([constraint])
     }
     
-    /// 自身長寬比 (width:height )
+    /// 自身長寬比 (width:height => 9:16)
     /// - Parameters:
     ///   - ratio: 倍率
     ///   - offset: 偏差值
@@ -249,5 +249,44 @@ extension UIView {
         )
         
         NSLayoutConstraint.activate([constraint])
+    }
+}
+
+// MARK: - 更新約束
+extension UIView {
+    
+    /// 更新高度約束
+    /// - Parameter height: CGFloat
+    func _updateHeight(_ height: CGFloat) {
+        _updateConstraint(firstAttribute: .height) { _height(with: height) }
+    }
+    
+    /// 更新寬度約束
+    /// - Parameter height: CGFloat
+    func _updateWidth(_ width: CGFloat) {
+        _updateConstraint(firstAttribute: .width) { _width(with: width) }
+    }
+}
+
+// MARK: - 更新約束
+private extension UIView {
+    
+    /// 更新約束
+    /// - Parameters:
+    ///   - firstAttribute: 要更新的屬性
+    ///   - clourse: 更新的動作
+    func _updateConstraint(firstAttribute: NSLayoutConstraint.Attribute, clourse: () -> Void) {
+        
+        var canUpdate = false
+        
+        constraints.forEach {
+            
+            if ($0.firstAttribute == firstAttribute) {
+                $0.isActive = false
+                canUpdate = true
+            }
+        }
+        
+        if (canUpdate) { clourse() }
     }
 }

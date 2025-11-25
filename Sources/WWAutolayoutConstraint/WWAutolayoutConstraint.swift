@@ -156,6 +156,26 @@ public extension WWAutolayoutWrapper {
 // MARK: - 公開函式
 public extension WWAutolayoutWrapper {
     
+    /// 更新寬度約束
+    /// - Parameter CGFloat: 寬度大小
+    func updateWidth(_ width: CGFloat) -> Self {
+        finish()
+        functionType = .update(.width(width))
+        return self
+    }
+    
+    /// 更新高度約束
+    /// - Parameter CGFloat: 高度大小
+    func updateHeight(_ height: CGFloat) -> Self {
+        finish()
+        functionType = .update(.height(height))
+        return self
+    }
+}
+
+// MARK: - 公開函式
+public extension WWAutolayoutWrapper {
+    
     /// 完全蓋在上面
     /// - Parameter superview: UIView
     /// - Returns: Self
@@ -198,8 +218,22 @@ public extension WWAutolayoutWrapper {
         case .aspectRatio(let ratio, let offset): view._aspectRatio(ratio, offset: offset)
         case .centerX(let otherView, let multiplier, let offset): view._centerX(by: otherView, multiplier: multiplier, offset: offset)
         case .centerY(let otherView, let multiplier, let offset): view._centerY(by: otherView, multiplier: multiplier, offset: offset)
+        case .update(let type): updateConstraint(with: type)
         }
         
         self.functionType = nil
+    }
+}
+
+// MARK: - 小工具
+private extension WWAutolayoutWrapper {
+    
+    /// 更新約束 - 長 / 寬
+    /// - Parameter type: WWAutolayoutWrapper<T>.ConstraintType
+    func updateConstraint(with type: WWAutolayoutWrapper<T>.ConstraintType) {
+        switch type {
+        case .height(let height): view._updateHeight(height)
+        case .width(let width): view._updateWidth(width)
+        }
     }
 }
