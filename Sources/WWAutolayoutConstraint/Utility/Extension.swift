@@ -31,8 +31,8 @@ extension UIView {
     /// - Parameters:
     ///   - view: 此View的SuperView
     ///   - top: 向上的間隔數值
-    ///   - left: 向左的間隔數值
-    func _autolayout(centerOn superView: UIView, top: CGFloat?, left: CGFloat?) {
+    ///   - leading: 向左的間隔數值
+    func _autolayout(centerOn superView: UIView, top: CGFloat?, leading: CGFloat?) {
 
         removeFromSuperview()
         superView.addSubview(self)
@@ -45,7 +45,7 @@ extension UIView {
         ]
         
         if let top = top { constraints.append(topAnchor.constraint(equalTo: superView.topAnchor, constant: top)) }
-        if let left = left { constraints.append(leftAnchor.constraint(equalTo: superView.leftAnchor, constant: left)) }
+        if let leading = leading { constraints.append(leftAnchor.constraint(equalTo: superView.leftAnchor, constant: leading)) }
 
         NSLayoutConstraint.activate(constraints)
     }
@@ -101,15 +101,15 @@ extension UIView {
     ///   - otherView: 要對齊的UIView
     ///   - xAxis: 對齊的位置
     ///   - useSafearea: 使用安全區域
-    func _left(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType, useSafeArea: Bool) {
+    func _leading(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType, useSafeArea: Bool) {
         
         let constraints: [NSLayoutConstraint]
         
         switch xAxis {
-        case .left(let offset):
+        case .leading(let offset):
             let _leadingAnchor = useSafeArea ? otherView.safeAreaLayoutGuide.leadingAnchor : otherView.leadingAnchor
             constraints = [leadingAnchor.constraint(equalTo: _leadingAnchor, constant: offset)]
-        case .right(let offset):
+        case .trailing(let offset):
             let _trailingAnchor = useSafeArea ? otherView.safeAreaLayoutGuide.trailingAnchor : otherView.trailingAnchor
             constraints = [leadingAnchor.constraint(equalTo: _trailingAnchor, constant: offset)]
         }
@@ -122,15 +122,15 @@ extension UIView {
     ///   - otherView: 要對齊的UIView
     ///   - xAxis: 對齊的位置
     ///   - useSafearea: 使用安全區域
-    func _right(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType, useSafeArea: Bool) {
+    func _trailing(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType, useSafeArea: Bool) {
         
         let constraints: [NSLayoutConstraint]
         
         switch xAxis {
-        case .left(let offset):
+        case .leading(let offset):
             let _leadingAnchor = useSafeArea ? safeAreaLayoutGuide.leadingAnchor : otherView.leadingAnchor
             constraints = [trailingAnchor.constraint(equalTo: _leadingAnchor, constant: offset)]
-        case .right(let offset):
+        case .trailing(let offset):
             let _trailingAnchor = useSafeArea ? safeAreaLayoutGuide.trailingAnchor : otherView.trailingAnchor
             constraints = [trailingAnchor.constraint(equalTo: _trailingAnchor, constant: offset)]
         }

@@ -18,8 +18,8 @@ public extension WWAutolayoutWrapper {
     
     /// X軸位置 + 偏移量
     enum XAxisType {
-        case left(_ offset: CGFloat)
-        case right(_ offset: CGFloat)
+        case leading(_ offset: CGFloat)
+        case trailing(_ offset: CGFloat)
     }
     
     /// Y軸位置 + 偏移量

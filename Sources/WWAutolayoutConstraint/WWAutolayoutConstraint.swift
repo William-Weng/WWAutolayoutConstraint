@@ -57,7 +57,7 @@ public extension WWAutolayoutWrapper {
     ///   - xAxis: 對齊的位置
     ///   - useSafearea: 使用安全區域
     /// - Returns: Self
-    func leading(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .left(0), useSafeArea: Bool = false) -> Self {
+    func leading(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .leading(0), useSafeArea: Bool = false) -> Self {
         finish()
         functionType = .leading(otherView, xAxis, useSafeArea)
         return self
@@ -69,7 +69,7 @@ public extension WWAutolayoutWrapper {
     ///   - xAxis: 對齊的位置
     ///   - useSafearea: 使用安全區域
     /// - Returns: Self
-    func trailing(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .right(0), useSafeArea: Bool = false) -> Self {
+    func trailing(by otherView: UIView, xAxis: WWAutolayoutWrapper<UIView>.XAxisType = .trailing(0), useSafeArea: Bool = false) -> Self {
         finish()
         functionType = .trailing(otherView, xAxis, useSafeArea)
         return self
@@ -236,10 +236,10 @@ public extension WWAutolayoutWrapper {
     /// - Parameters:
     ///   - view: UIView
     ///   - top: CGFloat?
-    ///   - left: CGFloat?
+    ///   - leading: CGFloat?
     /// - Returns: Self
-    func center(on superView: UIView, top: CGFloat? = nil, left: CGFloat? = nil) {
-        functionType = .center(superView, top, left)
+    func center(on superView: UIView, top: CGFloat? = nil, leading: CGFloat? = nil) {
+        functionType = .center(superView, top, leading)
         finish()
     }
 }
@@ -254,11 +254,11 @@ public extension WWAutolayoutWrapper {
         
         switch functionType {
         case .cover(let superView): view._autolayout(on: superView)
-        case .center(let superView, let top, let left): view._autolayout(centerOn: superView, top: top, left: left)
+        case .center(let superView, let top, let leading): view._autolayout(centerOn: superView, top: top, leading: leading)
         case .top(let superView, let yAxis, let useSafeArea): view._top(by: superView, yAxis: yAxis, useSafeArea: useSafeArea)
         case .bottom(let superView, let yAxis, let useSafeArea): view._bottom(by: superView, yAxis: yAxis, useSafeArea: useSafeArea)
-        case .leading(let superView, let xAxis, let useSafeArea): view._left(by: superView, xAxis: xAxis, useSafeArea: useSafeArea)
-        case .trailing(let superView, let xAxis, let useSafeArea): view._right(by: superView, xAxis: xAxis, useSafeArea: useSafeArea)
+        case .leading(let superView, let xAxis, let useSafeArea): view._leading(by: superView, xAxis: xAxis, useSafeArea: useSafeArea)
+        case .trailing(let superView, let xAxis, let useSafeArea): view._trailing(by: superView, xAxis: xAxis, useSafeArea: useSafeArea)
         case .height(let height): view._height(with: height)
         case .width(let width): view._width(with: width)
         case .heightRatio(let otherView, let ratio, let offset): view._height(by: otherView, ratio: ratio, offset: offset)
